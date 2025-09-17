@@ -1,0 +1,30 @@
+<div class="feedback-wrapper">
+  <div class="feedback-card">
+    <h2>Feedback Form</h2>
+    <p class="subtitle">We would love to hear your thoughts, suggestions, concerns or problems with anything so we can improve! We value your feedback, please share your thoughts below 👇</p>
+    <form (ngSubmit)="submitFeedback()">
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          [(ngModel)]="username"
+          name="username"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Feedback</label>
+        <textarea
+          placeholder="Write your feedback here..."
+          [(ngModel)]="note"
+          name="note"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" [disabled]="!username || !note">Submit</button>
+    </form>
+  </div>
+</div>
