@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FeedbackService {
-  private apiUrl = "https://yourapp.onrender.com/api/feedback";
+  private apiUrl = "https://angular-backend-feedback.onrender.com/api/feedback";
 
   constructor(private http: HttpClient) {}
 
