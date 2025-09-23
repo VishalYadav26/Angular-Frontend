@@ -1,34 +1,21 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';       // ✅ import here
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { FeedbackService } from './feedback.service';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
+import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,                         // ✅ standalone
-  imports: [FormsModule, HttpClientModule, CommonModule],  // ✅ add modules here
+  imports: [CommonModule, ChatListComponent, ChatWindowComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']      // comment if file not present
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  username: string = '';
-  note: string = '';
+  selectedChatId: string = '';
 
-  constructor(private feedbackService: FeedbackService) {}
+  constructor() {}
 
-  submitFeedback() {
-    const feedback = { username: this.username, note: this.note };
-    this.feedbackService.submitFeedback(feedback).subscribe({
-      next: () => {
-        alert('✅ Feedback submitted successfully!');
-        this.username = '';
-        this.note = '';
-      },
-      error: (err) => {
-        console.error(err);
-        alert('❌ Failed to submit feedback');
-      }
-    });
+  onChatSelected(chatId: string) {
+    this.selectedChatId = chatId;
   }
 }
